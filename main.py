@@ -16,7 +16,7 @@ from metrics import (
     classification_report,
 )
 from utils import set_seed
-from utils import log_mlflow
+from utils import log_experiment
 
 warnings.simplefilter(action="ignore", category=FutureWarning)
 
@@ -46,7 +46,7 @@ def experiment(
     y_pred = model.predict(X_test)
 
     # Print optimal parameters
-    print(model.get_params()) # TODO log this to mlflow
+    print(model.get_params())  # TODO log this to mlflow
 
     # Evaluate model
     acc = accuracy(y_test, y_pred)
@@ -75,25 +75,19 @@ if __name__ == "__main__":
         data, model, split_ratio, run_pca, run_grid_search, n_components, seed
     )
 
-    log_mlflow(
-        experiment_name="Occupancy Estimation",
-        run_name=f"{model.__class__.__name__} - PCA: {run_pca} - Grid Search: {run_grid_search}",
-        params={
-            "split_ratio": split_ratio,
-            "run_grid_search": run_grid_search,
-            "run_pca": run_pca,
-            "n_components": n_components,
-            "seed": seed,
-        },
-        metrics={
-            "accuracy": acc,
-            "precision": prec,
-            "recall": rec,
-            "f1_score": f1_score,
-            "roc_auc": roc,
-        },
+    log_experiment(
+        model,
+        run_pca,
+        run_grid_search,
+        split_ratio,
+        n_components,
+        seed,
+        acc,
+        prec,
+        rec,
+        f1_score,
+        roc,
     )
-
     print(
         f"> Accuracy: {acc:.2f}\n"
         f"> Precision: {prec:.2f}\n"
