@@ -17,7 +17,6 @@ class RandomForest(BaseClassifier):
             max_features="auto",
             max_leaf_nodes=None,
             min_impurity_decrease=0.0,
-            min_impurity_split=None,
             bootstrap=True,
             oob_score=False,
             n_jobs=None,
