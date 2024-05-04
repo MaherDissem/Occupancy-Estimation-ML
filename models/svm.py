@@ -27,22 +27,11 @@ class SVMclassifier(BaseClassifier):
         )
 
         self.param_grid = {
-            "C": [0.1, 1, 10, 100],
-            "kernel": ["linear", "poly", "rbf", "sigmoid"],
-            "degree": [3, 4, 5],
+            "C": [0.1, 1, 10],
+            "kernel": ["linear", "rbf", "poly", "sigmoid"],
             "gamma": ["scale", "auto"],
-            "coef0": [0.0, 0.1, 0.5, 1.0],
-            "shrinking": [True, False],
-            "probability": [True, False],
-            "tol": [0.001, 0.01, 0.1],
-            "cache_size": [200, 400, 600],
-            "class_weight": [None, "balanced"],
-            "verbose": [False],
-            "max_iter": [-1, 1000, 2000],
             "decision_function_shape": ["ovo", "ovr"],
-            "break_ties": [False],
-            "random_state": [None],
-        }
+}
 
     def fit(self, X: np.ndarray, y: np.ndarray, run_grid_search=False) -> None:
         if run_grid_search:

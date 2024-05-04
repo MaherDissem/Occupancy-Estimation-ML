@@ -12,7 +12,7 @@ from utils import log_experiment
 split_ratio = 0.2
 run_grid_search = True
 run_pca = True
-n_components = 2  # originally, the dataset has 13 features
+n_components = 3  # originally, the dataset has 13 features
 seed = 42
 csv_path = "data/processed/h358-2015.csv"
 data = pd.read_csv(csv_path, index_col=0)
