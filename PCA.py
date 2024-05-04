@@ -19,5 +19,3 @@ def perform_pca(data, n_components):
     pca.fit(data)
     return pca.transform(data)
 
-
-# TODO save plots
