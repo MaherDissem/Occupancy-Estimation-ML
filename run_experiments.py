@@ -20,7 +20,7 @@ data = pd.read_csv(csv_path, index_col=0)
 
 for model in [
     NaiveBayes(),
-    SVMclassifier(),
+    # SVMclassifier(),
     KNNClassifier(),
     DecisionTree(),
     RandomForest(),
